@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1049506149922",
+    "project_id": "tfm-ct-dashboard",
+    "storage_bucket": "tfm-ct-dashboard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049506149922:android:71c6a4a66a27c4f6557c7b",
+        "android_client_info": {
+          "package_name": "com.MJG.tfmcomputationalthinkinggame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaGUq22w3moP1epXZFjkxfpQn9UM11Z0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

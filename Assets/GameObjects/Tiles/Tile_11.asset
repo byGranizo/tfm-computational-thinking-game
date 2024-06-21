@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09df83b4641fe648929656e64873e6a, type: 3}
+  m_Name: Tile_11
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: c07c23f67750f1c43bb9dfb0e373819c, type: 2}
+  _biomeNorth: 3
+  _biomeNorthEast: 0
+  _biomeSouthEast: 0
+  _biomeSouth: 3
+  _biomeSouthWest: 0
+  _biomeNorthWest: 0
+  biomeGroups:
+  - biome: 0
+    value: 2
+    links: 0100000002000000
+  - biome: 0
+    value: 2
+    links: 0500000004000000

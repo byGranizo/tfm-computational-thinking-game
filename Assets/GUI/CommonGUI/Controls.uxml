@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="PopUpTemplate" src="project://database/Assets/GUI/CommonGUI/PopUpTemplate.uxml?fileID=9197481963319205126&amp;guid=645e2aef56d4b3848bd4ec32ad33e6dd&amp;type=3#PopUpTemplate" />
+    <Style src="project://database/Assets/GUI/CommonGUI/commonGUIStyle.uss?fileID=7433441132597879392&amp;guid=58a9bd2633f81c646a049f65d3d31e67&amp;type=3#commonGUIStyle" />
+    <ui:Instance template="PopUpTemplate" name="PopUpTemplate" style="flex-grow: 1;" />
+</ui:UXML>

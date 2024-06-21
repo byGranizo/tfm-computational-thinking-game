@@ -1,0 +1,10 @@
+<size=50>Controles</size>
+
+Haz <b>click</b> en las losetas de la parte inferior derecha de la pantalla por coger una del color seleccionado.
+
+Haz <b>click</b> en una de las posiciones resaltadas del tablero para colocar la loseta en misma posición que la estas cogiendo.
+
+Puedez pulsar <b>R</b> en el teclado para rotar la loseta y hacer que encaje en otros puntos del tablero.
+
+Si rodeas una loseta comodín, aparecera una ventana emergente con las misiones activas en ese momeno. Puedes hacer <b>click</b> en una de ellas para completarla de forma automatica.
+

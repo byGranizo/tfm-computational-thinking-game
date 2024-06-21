@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/GUI/Components.uss?fileID=7433441132597879392&amp;guid=c36710789920549468876c5cfd80b55c&amp;type=3#Components" />
+    <ui:VisualElement picking-mode="Ignore" style="flex-direction: row;">
+        <ui:VisualElement style="align-items: stretch;">
+            <ui:Button text="Reglas" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenRulesButton" />
+            <ui:Button text="Controles" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenControlsButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

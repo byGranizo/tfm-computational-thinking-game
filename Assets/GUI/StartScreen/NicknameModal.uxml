@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Components.uss?fileID=7433441132597879392&amp;guid=c36710789920549468876c5cfd80b55c&amp;type=3#Components" />
+    <ui:VisualElement name="VisualElement" style="flex-direction: row; align-items: auto; justify-content: center; align-self: auto; height: 100%; background-color: rgba(0, 0, 0, 0.39);">
+        <ui:VisualElement name="VisualElement" style="align-items: stretch; align-self: center; background-color: rgba(255, 255, 255, 0); padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; background-image: url(&apos;project://database/Assets/Sprites/grey_panel.png?fileID=2800000&amp;guid=8332c852bb48fc94ba9a456c42e49b64&amp;type=3#grey_panel&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill;">
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" name="NicknameField" />
+            <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SubmitButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

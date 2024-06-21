@@ -1,0 +1,45 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/GUI/GameScreen/InGame.uss?fileID=7433441132597879392&amp;guid=36c40a333f7f45846a11f1076ae01b89&amp;type=3#InGame" />
+    <ui:VisualElement style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; justify-content: space-between; height: 100%;">
+        <ui:VisualElement name="Top" style="flex-direction: row; justify-content: flex-end;">
+            <ui:VisualElement name="ActiveCardsContainer" style="flex-direction: row; justify-content: space-between; background-image: none;">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_0" class="card" style="background-image: url(&apos;project://database/Assets/Textures/Cards/Card_EASY.jpg?fileID=2800000&amp;guid=4f54c0f5f3dfd7143bfcb15b3d4dee56&amp;type=3#Card_EASY&apos;);" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_1" class="card" style="background-image: url(&apos;project://database/Assets/Textures/Cards/Card_NORMAL.jpg?fileID=2800000&amp;guid=64a3dc539abb9964eb9b61b22599c43d&amp;type=3#Card_NORMAL&apos;);" />
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_2" class="card" style="background-image: url(&apos;project://database/Assets/Textures/Cards/Card_HARD.jpg?fileID=2800000&amp;guid=fcc8bc4289d229242bd3d7fabeb4e70e&amp;type=3#Card_HARD&apos;);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Mid" style="flex-direction: row; justify-content: space-between; flex-grow: 1; align-items: center;">
+            <ui:VisualElement name="TimerContainer" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/Sprites/red_panel.png?fileID=2800000&amp;guid=60a97d21f1cfe2a4e80680260a3e4866&amp;type=3#red_panel&apos;); width: 100px; height: 100px; align-items: center; justify-content: center;">
+                <ui:Label tabindex="-1" text="30" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Timer" style="font-size: 55px; -unity-font-style: bold; -unity-text-align: middle-center; -unity-text-outline-color: rgb(255, 255, 255); -unity-text-outline-width: 1px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="CompletedMissions" style="justify-content: center;">
+                <ui:VisualElement name="MissionType_0" class="mission_type">
+                    <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                    <ui:Image style="--unity-image: url(&apos;project://database/Assets/Textures/Emblems/easy_emblem.png?fileID=21300000&amp;guid=b167ad422c5657448b296dce33c1d2c9&amp;type=3#easy_emblem&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="MissionType_1" class="mission_type">
+                    <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                    <ui:Image style="--unity-image: url(&apos;project://database/Assets/Textures/Emblems/mid_emblem.png?fileID=21300000&amp;guid=bcd14f9fd34b4fa4d95652cf019f6d28&amp;type=3#mid_emblem&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="MissionType_2" class="mission_type">
+                    <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                    <ui:Image style="--unity-image: url(&apos;project://database/Assets/Textures/Emblems/difficult_emblem.png?fileID=21300000&amp;guid=0534f87ed4a154a4986e2b5fa8a09319&amp;type=3#difficult_emblem&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Bottom" style="flex-direction: row; align-items: flex-end; justify-content: space-between;">
+            <ui:VisualElement name="NewTile" style="flex-direction: column; flex-wrap: nowrap;">
+                <ui:VisualElement name="NewTop" style="align-items: center; flex-direction: row; justify-content: center;">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewTileBlue" text="15" class="tile" style="background-image: url(&apos;project://database/Assets/Textures/Tiles/Tile_BLUE.png?fileID=2800000&amp;guid=6bcaca8e943515e488fd4219d64839d2&amp;type=3#Tile_BLUE&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="NewBottom" style="flex-direction: row; justify-content: center;">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewTileGreen" text="15" class="tile" style="background-image: url(&apos;project://database/Assets/Textures/Tiles/Tile_GREEN.png?fileID=2800000&amp;guid=12aa4574df2f515499573cae8e53e324&amp;type=3#Tile_GREEN&apos;);" />
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewTileRed" text="15" class="tile" style="background-image: url(&apos;project://database/Assets/Textures/Tiles/Tile_RED.png?fileID=2800000&amp;guid=1f3b21bc76b4bcb4d96472313870a465&amp;type=3#Tile_RED&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="NewCardWrapper" style="align-items: flex-end;">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewCard" text="25" class="card" style="background-image: url(&apos;project://database/Assets/Textures/Cards/Card_EASY.jpg?fileID=2800000&amp;guid=4f54c0f5f3dfd7143bfcb15b3d4dee56&amp;type=3#Card_EASY&apos;);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

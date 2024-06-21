@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/GUI/GameScreen/InGame.uss?fileID=7433441132597879392&amp;guid=36c40a333f7f45846a11f1076ae01b89&amp;type=3#InGame" />
+    <ui:VisualElement name="ActiveCardSelector" style="flex-grow: 1; justify-content: center; position: relative; align-items: center; flex-direction: column;">
+        <ui:Label tabindex="-1" text="Selecciona una tarjeta" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        <ui:VisualElement name="ActiveCardsContainer" style="justify-content: center; background-image: none; flex-direction: row;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_0" class="card" style="background-image: url(&apos;project://database/Assets/Textures/Cards/Card_EASY.jpg?fileID=2800000&amp;guid=4f54c0f5f3dfd7143bfcb15b3d4dee56&amp;type=3#Card_EASY&apos;);" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_1" class="card" style="background-image: url(&apos;project://database/Assets/Textures/Cards/Card_NORMAL.jpg?fileID=2800000&amp;guid=64a3dc539abb9964eb9b61b22599c43d&amp;type=3#Card_NORMAL&apos;);" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Card_2" class="card" style="background-image: url(&apos;project://database/Assets/Textures/Cards/Card_HARD.jpg?fileID=2800000&amp;guid=fcc8bc4289d229242bd3d7fabeb4e70e&amp;type=3#Card_HARD&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

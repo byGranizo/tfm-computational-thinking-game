@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; justify-content: center; align-self: center;">
+        <ui:Button text="Start game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartGameButton" />
+        <ui:Button text="End game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EndGameButton" />
+        <ui:Button text="Turn" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TurnButton" />
+        <ui:Button text="Mission" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MissionButton" />
+        <ui:Button text="Close" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseButton" style="margin-top: 20px;" />
+    </ui:VisualElement>
+</ui:UXML>
