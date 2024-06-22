@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class EndGameUIController : MonoBehaviour
 {
-    GUIGameController guiGameController;
+    //GUIGameController guiGameController;
 
     UIDocument uiDocument;
     VisualElement root;
@@ -16,7 +16,7 @@ public class EndGameUIController : MonoBehaviour
 
     void Awake()
     {
-        guiGameController = GetComponentInParent<GUIGameController>();
+        //guiGameController = GetComponentInParent<GUIGameController>();
 
         uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
