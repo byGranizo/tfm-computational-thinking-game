@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
         get { return tileType; }
     }
 
-    private GameManager gameManager;
+    //private GameManager gameManager;
 
     void Awake()
     {
@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
