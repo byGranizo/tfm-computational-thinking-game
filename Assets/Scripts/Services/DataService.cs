@@ -54,6 +54,7 @@ public static class DataService
       ["game_id"] = new { stringValue = currentGame.Id },
       ["turn_n"] = new { integerValue = turnType.NTurn },
       ["turn_duration"] = new { doubleValue = turnType.TurnDuration },
+      ["date"] = new { timestampValue = DateTime.Now.ToUniversalTime().ToString("o") },
     };
 
     string documentId = await SendPostRequest(fields, "turn");
@@ -69,7 +70,8 @@ public static class DataService
       ["game_id"] = new { stringValue = currentGame.Id },
       ["turn_start"] = new { integerValue = cardType.TurnStart },
       ["turn_end"] = new { integerValue = cardType.TurnEnd },
-      ["difficulty"] = new { stringValue = cardType.MissionType.ToString() },
+      ["difficulty"] = new { stringValue = cardType.CardMissionDifficulty.ToString() },
+      ["wildcard"] = new { booleanValue = cardType.CompletedWithWildCard },
       ["biome"] = new { stringValue = cardType.Biome.ToString() },
       ["date"] = new { timestampValue = DateTime.Now.ToUniversalTime().ToString("o") },
     };
