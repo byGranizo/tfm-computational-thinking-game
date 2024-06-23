@@ -9,7 +9,7 @@ public class ActiveMissionSelectUIController : MonoBehaviour
 
     UIDocument uiDocument;
     VisualElement root;
-    Button[] cardsButtons = new Button[3];
+    readonly Button[] cardsButtons = new Button[3];
 
     // Start is called before the first frame update
     void Start()

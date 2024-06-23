@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    private float planeHeight = 0;
+    private readonly float planeHeight = 0;
 
     private Vector3 mouseOrigin;
     private bool isDragging = false;
@@ -52,7 +52,8 @@ public class CameraController : MonoBehaviour
         }
 
         float scroll = Input.mouseScrollDelta.y;
-        if (scroll != 0)
+        const float epsilon = 0.001f; // Tolerance level
+        if (Math.Abs(scroll) > epsilon)
         {
             Camera mainCamera = Camera.main;
             float targetZoom = mainCamera.orthographicSize - scroll * zoomScale;

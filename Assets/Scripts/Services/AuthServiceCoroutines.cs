@@ -25,7 +25,8 @@ public class AuthServiceCoroutines : MonoBehaviour
                 Debug.Log("Usuario existe");
                 Debug.Log("email: " + user.email);
                 LocalStorage.SaveUser(user);
-            } else
+            }
+            else
             {
                 Debug.Log("Usuario no existe");
                 SignUp(username, password);
@@ -76,7 +77,7 @@ public class AuthServiceCoroutines : MonoBehaviour
             }
         }
     }
-    
+
     private IEnumerator SignUpRequest(string username, string password, System.Action<FirebaseUser> callback)
     {
         WWWForm form = new WWWForm();
@@ -92,7 +93,8 @@ public class AuthServiceCoroutines : MonoBehaviour
             {
                 Debug.Log(request.error);
                 callback?.Invoke(null);
-            } else
+            }
+            else
             {
                 string jsonResponse = request.downloadHandler.text;
                 FirebaseUser user = JsonUtility.FromJson<FirebaseUser>(jsonResponse);
@@ -118,67 +120,6 @@ public class AuthServiceCoroutines : MonoBehaviour
         }
     }
 }
-
-
-
-
-// https://www.youtube.com/watch?v=LE5Vd83Ed0I   ---> Firebase API con autenticacion min 35:00 mas o menos
-// https://www.youtube.com/watch?v=GXvJ1RddsfQ    ---> Api rest unity
-
-// Firebase unity https://www.youtube.com/watch?v=OvkFsAtMGVY
-
-//https://firebase.google.com/docs/unity/setup?hl=es#desktop-workflow
-
-
-
-
-/*public void GenerateRequest()
-    {
-        StartCoroutine(ProcessRequest(URL));
-    }
-
-    private IEnumerator ProcessRequest(string uri)
-    {
-        using (UnityWebRequest request = UnityWebRequest.Get(URL))
-        {
-            yield return request.SendWebRequest();
-
-            if (!string.IsNullOrWhiteSpace(request.error))
-            {
-                Debug.Log(request.error);
-            } else
-            {
-                Debug.Log(request.downloadHandler.text);
-            }
-        }
-    }*/
-
-
-
-    /*
-    private IEnumerator GetUserRequest(string username, System.Action<bool> callback)
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("email", username + "@user-only-auth.dev");
-
-        using (UnityWebRequest request = UnityWebRequest.Post(GET_USER_URL, form))
-        {
-            yield return request.SendWebRequest();
-
-            if (!string.IsNullOrWhiteSpace(request.error))
-            {
-                Debug.Log(request.error);
-                callback?.Invoke(false);
-            }
-            else
-            {
-                Debug.Log(request.downloadHandler.text);
-                callback?.Invoke(true);
-            }
-        }
-    }
-    
-    */
 
 
 

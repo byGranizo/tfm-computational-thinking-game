@@ -17,7 +17,6 @@ public static class AuthService
 
     public static async Task<FirebaseUser> LoginUser(string nickname)
     {
-        //string username = nickname.ToLower();
         string username = nickname.Replace(" ", "").ToLower();
         string password = GenerateMD5(username);
 

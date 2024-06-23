@@ -30,8 +30,6 @@ public class BoardController : MonoBehaviour
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-
-        //InitBoardGrid();
     }
 
     public void InitBoardGrid()
@@ -284,27 +282,5 @@ public class BoardController : MonoBehaviour
             hexagonLineRenderer.SetPosition(k, new Vector3(hexagonRadius * Mathf.Cos(angle), 0, hexagonRadius * Mathf.Sin(angle)));
         }
         hexagonLineRenderer.SetPosition(6, hexagonLineRenderer.GetPosition(0));
-
-
-        /* // Instantiate a GameObject for the inner circle and add a LineRenderer to it
-        GameObject innerCircle = new GameObject("InnerCircle");
-        innerCircle.transform.parent = cell.transform;
-        innerCircle.transform.localPosition = Vector3.zero;
-        LineRenderer innerCircleLineRenderer = innerCircle.AddComponent<LineRenderer>();
-        innerCircleLineRenderer.useWorldSpace = false;
-        innerCircleLineRenderer.positionCount = 37;
-        innerCircleLineRenderer.loop = true;
-        innerCircleLineRenderer.widthMultiplier = 0.01f; // Adjust this value to change the border width
-        innerCircleLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        innerCircleLineRenderer.startColor = innerCircleLineRenderer.endColor = Color.black;
-
-        // Set the positions of the LineRenderer to the vertices of the inner circle
-        float innerCircleRadius = halfSize; // The radius of the inner circle is the same as half the size of the cell
-        for (int k = 0; k < 36; k++)
-        {
-            float angle = k * 10 * Mathf.Deg2Rad; // Each vertex is 10 degrees apart
-            innerCircleLineRenderer.SetPosition(k, new Vector3(innerCircleRadius * Mathf.Cos(angle), 0, innerCircleRadius * Mathf.Sin(angle)));
-        }
-        innerCircleLineRenderer.SetPosition(36, innerCircleLineRenderer.GetPosition(0)); */
     }
 }

@@ -1,8 +1,8 @@
 public class TurnType
 {
-  private int nTurn;
+  private readonly int nTurn;
 
-  private float turnDuration;
+  private readonly float turnDuration;
 
   public TurnType(int nTurn, float turnDuration)
   {

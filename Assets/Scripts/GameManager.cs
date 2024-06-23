@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private List<CardType> cardTypes;
     [SerializeField]
     private CardType[] activeCards = new CardType[3];
-    private List<CardType> completedCards = new List<CardType>();
+    private readonly List<CardType> completedCards = new List<CardType>();
 
     [Space(10)]
     [Header("Turns")]

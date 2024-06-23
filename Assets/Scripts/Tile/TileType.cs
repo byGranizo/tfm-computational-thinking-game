@@ -216,8 +216,6 @@ public class TileType : ScriptableObject
         {
             biomeGroups[i].RotateClockwise();
         }
-
-        //DebugBiomes();
     }
 
     public void RotateAntiClockwise()
@@ -233,27 +231,6 @@ public class TileType : ScriptableObject
         for (int i = 0; i < biomeGroups.Count; i++)
         {
             biomeGroups[i].RotateAntiClockwise();
-        }
-
-        //DebugBiomes();
-    }
-
-    private void DebugBiomes()
-    {
-        Debug.Log("North: " + _biomeNorth);
-        Debug.Log("NorthEast: " + _biomeNorthEast);
-        Debug.Log("SouthEast: " + _biomeSouthEast);
-        Debug.Log("South: " + _biomeSouth);
-        Debug.Log("SouthWest: " + _biomeSouthWest);
-        Debug.Log("NorthWest: " + _biomeNorthWest);
-
-        for (int i = 0; i < biomeGroups.Count; i++)
-        {
-            Debug.Log("Group " + i + ": " + biomeGroups[i].Biome);
-            for (int j = 0; j < biomeGroups[i].Links.Count; j++)
-            {
-                Debug.Log("Link " + j + ": " + biomeGroups[i].Links[j]);
-            }
         }
     }
 }

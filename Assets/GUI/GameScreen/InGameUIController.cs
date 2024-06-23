@@ -10,11 +10,11 @@ public class InGameUIController : MonoBehaviour
     UIDocument uiDocument;
     VisualElement root;
     Button newCardButton;
-    Button[] cardsButtons = new Button[3];
+    readonly Button[] cardsButtons = new Button[3];
 
-    Button[] tileButtons = new Button[3];
+    readonly Button[] tileButtons = new Button[3];
 
-    Label[] completedMissionsLabels = new Label[3];
+    readonly Label[] completedMissionsLabels = new Label[3];
 
     Label timerLabel;
 
@@ -26,7 +26,6 @@ public class InGameUIController : MonoBehaviour
         root = uiDocument.rootVisualElement;
 
         newCardButton = root.Q<Button>("NewCard");
-        newCardButton.clicked += OnNewCardButtonClicked;
 
         for (int i = 0; i < 3; i++)
         {
@@ -53,11 +52,6 @@ public class InGameUIController : MonoBehaviour
     {
         cardsButtons[index].style.backgroundImage = new StyleBackground(cardTexture);
 
-    }
-
-    private void OnNewCardButtonClicked()
-    {
-        //guiGameController.OnNewCardButtonClicked();
     }
 
     public void ChangeNextCardTexture(Texture2D cardBackTexture)

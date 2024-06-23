@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class LocalStorage
+public static class LocalStorage
 {
     public static void SaveUser(FirebaseUser user)
     {
@@ -22,7 +22,6 @@ public class LocalStorage
 
     public static void SaveGame(GameType game)
     {
-        //string json = JsonUtility.ToJson(game);
         string json = JsonConvert.SerializeObject(game);
 
         PlayerPrefs.SetString("currentGame", json);

@@ -116,6 +116,7 @@
     <None Include="Assets\GUI\CommonGUI\commonGUIStyle.uss" />
     <None Include="Assets\GUI\CommonGUI\Controls.uxml" />
     <None Include="Assets\Doc\Game_Rules.txt" />
+    <None Include="Assets\Scripts\Services\RulesFirebase.txt" />
     <None Include="Assets\GUI\GameScreen\ActiveMissionSelect.uxml" />
     <None Include="Assets\Packages\Newtonsoft.Json.13.0.3\lib\netstandard2.0\Newtonsoft.Json.dll" />
     <None Include="Assets\GUI\CommonGUI\Debug.uxml" />

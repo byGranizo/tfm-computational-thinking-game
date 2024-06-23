@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mouse
+public static class Mouse
 {
     public static Vector3 GetWorldPosition(float planeHeight)
     {
