@@ -5,19 +5,16 @@ using UnityEngine.UIElements;
 
 public class EndGameUIController : MonoBehaviour
 {
-    UIDocument uiDocument;
     VisualElement root;
-
-    Button goToMenuButton;
 
     Label resultLabel;
 
     void Awake()
     {
-        uiDocument = GetComponent<UIDocument>();
+        UIDocument uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
-        goToMenuButton = root.Q<Button>("GoToMenuButton");
+        Button goToMenuButton = root.Q<Button>("GoToMenuButton");
         goToMenuButton.clicked += GoToMenu;
 
         resultLabel = root.Q<Label>("GameResult");

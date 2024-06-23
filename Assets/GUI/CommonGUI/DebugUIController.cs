@@ -5,39 +5,31 @@ using UnityEngine.UIElements;
 
 public class DebugUIController : MonoBehaviour
 {
-    UIDocument uiDocument;
     VisualElement root;
 
-    Button closeButton;
-
     CommonUIController commonUIController;
-
-    Button startGameButton;
-    Button endGameButton;
-    Button turnButton;
-    Button missionButton;
 
     // Start is called before the first frame update
     void Awake()
     {
         commonUIController = GetComponentInParent<CommonUIController>();
 
-        uiDocument = GetComponent<UIDocument>();
+        UIDocument uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
-        closeButton = root.Q<Button>("CloseButton");
+        Button closeButton = root.Q<Button>("CloseButton");
         closeButton.clicked += commonUIController.HideDebugUI;
 
-        startGameButton = root.Q<Button>("StartGameButton");
+        Button startGameButton = root.Q<Button>("StartGameButton");
         startGameButton.clicked += StartGameButtonOnClicked;
 
-        endGameButton = root.Q<Button>("EndGameButton");
+        Button endGameButton = root.Q<Button>("EndGameButton");
         endGameButton.clicked += EndGameButtonOnClicked;
 
-        turnButton = root.Q<Button>("TurnButton");
+        Button turnButton = root.Q<Button>("TurnButton");
         turnButton.clicked += TurnButtonOnClicked;
 
-        missionButton = root.Q<Button>("MissionButton");
+        Button missionButton = root.Q<Button>("MissionButton");
         missionButton.clicked += MissionButtonOnClicked;
     }
 

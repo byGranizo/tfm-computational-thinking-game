@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 public class ActiveMissionSelectUIController : MonoBehaviour
 {
     GUIGameController guiGameController;
-
-    UIDocument uiDocument;
     VisualElement root;
     readonly Button[] cardsButtons = new Button[3];
 
@@ -16,10 +14,8 @@ public class ActiveMissionSelectUIController : MonoBehaviour
     {
         guiGameController = GetComponentInParent<GUIGameController>();
 
-        uiDocument = GetComponent<UIDocument>();
+        UIDocument uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
-
-        VisualElement cardContainer = root.Q<VisualElement>("ActiveCardsContainer");
 
         for (int i = 0; i < 3; i++)
         {

@@ -5,14 +5,8 @@ using UnityEngine.UIElements;
 
 public class RulesUIController : MonoBehaviour
 {
-    UIDocument uiDocument;
     VisualElement root;
 
-    Button closeButton;
-
-    CommonUIController commonUIController;
-
-    VisualElement popupContent;
     Label rulesLabel;
 
     [SerializeField]
@@ -21,15 +15,15 @@ public class RulesUIController : MonoBehaviour
 
     void Awake()
     {
-        commonUIController = GetComponentInParent<CommonUIController>();
+        CommonUIController commonUIController = GetComponentInParent<CommonUIController>();
 
-        uiDocument = GetComponent<UIDocument>();
+        UIDocument uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
-        closeButton = root.Q<Button>("CloseButton");
+        Button closeButton = root.Q<Button>("CloseButton");
         closeButton.clicked += commonUIController.HideRulesUI;
 
-        popupContent = root.Q<VisualElement>("Content");
+        VisualElement popupContent = root.Q<VisualElement>("Content");
         rulesLabel = popupContent.Q<Label>("Text");
     }
 
