@@ -62,18 +62,11 @@ public class GameManager : MonoBehaviour
 
         boardController = FindObjectOfType<BoardController>();
         boardController.InitBoardGrid();
-
-
     }
 
     private void Start()
     {
-        SelectNextCard();
-        FillCards();
-        RefreshCardsUI();
-        guiGameController.RefreshTileUI(tileRiverTypes.Count, tileWoodTypes.Count, tileTownTypes.Count);
-
-        GameState.Instance.SubmitStartGame();
+        InitializeGame();
     }
 
     private void Update()
@@ -81,29 +74,33 @@ public class GameManager : MonoBehaviour
         UpdateTimer();
     }
 
+    private void InitializeGame()
+    {
+        SelectNextCard();
+        FillCards();
+        RefreshCardsUI();
+        guiGameController.RefreshTileUI(tileRiverTypes.Count, tileWoodTypes.Count, tileTownTypes.Count);
+        GameState.Instance.SubmitStartGame();
+    }
+
     /* TILES */
     public void NewTileUI(BiomeType biomeType)
     {
         lastModifiedBiomes = null;
-
-        List<TileType> tileTypes = new List<TileType>();
-        switch (biomeType)
-        {
-            case BiomeType.River:
-                tileTypes = tileRiverTypes;
-                break;
-            case BiomeType.Wood:
-                tileTypes = tileWoodTypes;
-                break;
-            case BiomeType.Town:
-                tileTypes = tileTownTypes;
-                break;
-        }
+        List<TileType> tileTypes = GetTileTypes(biomeType);
         InstantiateGameTile(tileTypes);
-
         guiGameController.RefreshTileUI(tileRiverTypes.Count, tileWoodTypes.Count, tileTownTypes.Count);
+    }
 
-
+    private List<TileType> GetTileTypes(BiomeType biomeType)
+    {
+        return biomeType switch
+        {
+            BiomeType.River => tileRiverTypes,
+            BiomeType.Wood => tileWoodTypes,
+            BiomeType.Town => tileTownTypes,
+            _ => new List<TileType>()
+        };
     }
 
     private void InstantiateGameTile(List<TileType> tileTypes)
@@ -159,34 +156,25 @@ public class GameManager : MonoBehaviour
                 if (cardTypes.Count == 0)
                 {
                     nextCardIndex = -1;
-                    continue;
                 }
-
-                SelectNextCard();
+                else
+                {
+                    SelectNextCard();
+                }
             }
         }
 
         if (!cardPlaced)
         {
             Debug.Log("No more space for cards");
-            return false;
         }
 
-        return true;
+        return cardPlaced;
     }
 
     private void SelectNextCard()
     {
-        if (cardTypes.Count == 0)
-        {
-            Debug.Log("No more cards to instantiate");
-            nextCardIndex = -1;
-        }
-        else
-        {
-            int index = Random.Range(0, cardTypes.Count);
-            nextCardIndex = index;
-        }
+        nextCardIndex = cardTypes.Count == 0 ? -1 : Random.Range(0, cardTypes.Count);
     }
 
     private void RefreshCardsUI()
@@ -196,14 +184,10 @@ public class GameManager : MonoBehaviour
             guiGameController.ChangeNextCardDifficulty(CardMissionDifficulty.None);
             guiGameController.RefreshCardUI(cardTypes.Count);
             return;
-        };
+        }
 
         CardType nextCardType = cardTypes[nextCardIndex];
-
-        CardMissionDifficulty nextCardDifficulty = nextCardType != null ? nextCardType.CardMissionDifficulty : CardMissionDifficulty.None;
-
-        //TODO: Mix both methods
-        guiGameController.ChangeNextCardDifficulty(nextCardDifficulty);
+        guiGameController.ChangeNextCardDifficulty(nextCardType?.CardMissionDifficulty ?? CardMissionDifficulty.None);
         guiGameController.RefreshCardUI(cardTypes.Count);
     }
 
@@ -212,30 +196,14 @@ public class GameManager : MonoBehaviour
     public void CheckMissionsAtPlace(List<(BiomeType, int)> modifiedBiomes)
     {
         EndTurn();
-        string biomes = "";
-        modifiedBiomes.ForEach(biome => biomes += biome.Item1 + " " + biome.Item2 + " | ");
-        Debug.Log(biomes);
-
         lastModifiedBiomes = modifiedBiomes;
         CheckMissions();
-        bool wildcardCompleted = CheckWildcard();
-
-        if (!wildcardCompleted && !gameEnded) StartTurn();
+        if (!CheckWildcard() && !gameEnded) StartTurn();
     }
 
     private bool CheckWildcard()
     {
-        int wildcardIndex = -1;
-
-        for (int i = 0; i < lastModifiedBiomes.Count; i++)
-        {
-            if (lastModifiedBiomes[i].Item1 == BiomeType.Wildcard)
-            {
-                wildcardIndex = i;
-                break;
-            }
-        }
-
+        int wildcardIndex = lastModifiedBiomes.FindIndex(biome => biome.Item1 == BiomeType.Wildcard);
         if (wildcardIndex == -1) return false;
 
         if (lastModifiedBiomes[wildcardIndex].Item2 <= 1)
@@ -253,28 +221,28 @@ public class GameManager : MonoBehaviour
 
     public void CompleteMissionWithWildcard(int missionIndex)
     {
-        CardType cardType = activeCards[missionIndex];
-
-        cardType.TurnEnd = currentTurn;
-        cardType.CompletedWithWildCard = true;
-
-        GameState.Instance.SubmitCompletedMission(cardType);
-
-        completedCards.Add(cardType);
+        CompleteMission(activeCards[missionIndex], true);
         activeCards[missionIndex] = null;
+        HandleNewCards();
+    }
 
+    private void CompleteMission(CardType cardType, bool withWildcard)
+    {
+        cardType.TurnEnd = currentTurn;
+        cardType.CompletedWithWildCard = withWildcard;
+        GameState.Instance.SubmitCompletedMission(cardType);
+        completedCards.Add(cardType);
+    }
+
+    private void HandleNewCards()
+    {
         bool newCardsInstantiated = FillCards();
-
         RefreshCardsUI();
         RefreshMissionsUI();
         CheckGameEnded();
-
         if (!newCardsInstantiated) return;
-
         CheckMissions();
-        bool wildcardCompleted = CheckWildcard();
-
-        if (!wildcardCompleted && !gameEnded) StartTurn();
+        if (!CheckWildcard() && !gameEnded) StartTurn();
     }
 
     private void CheckMissions()
@@ -282,45 +250,27 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < activeCards.Length; i++)
         {
             if (activeCards[i] == null) continue;
-
-            CardType cardType = activeCards[i];
-
-            bool missionCompleted = false;
-            for (int j = 0; j < lastModifiedBiomes.Count; j++)
+            if (IsMissionCompleted(activeCards[i]))
             {
-                if (cardType.Biome != lastModifiedBiomes[j].Item1) continue;
-
-                if (cardType.MissionType == CardMissionType.EqualsOrGreater && cardType.Value <= lastModifiedBiomes[j].Item2)
-                {
-                    missionCompleted = true;
-                    break;
-                }
-                if (cardType.MissionType == CardMissionType.Equals && cardType.Value == lastModifiedBiomes[j].Item2)
-                {
-                    missionCompleted = true;
-                    break;
-                }
-            }
-
-            if (missionCompleted)
-            {
-                cardType.TurnEnd = currentTurn;
-                completedCards.Add(cardType);
-
-                GameState.Instance.SubmitCompletedMission(cardType);
-
+                CompleteMission(activeCards[i], false);
                 activeCards[i] = null;
             }
         }
-        bool newCardsInstantiated = FillCards();
+        HandleNewCards();
+    }
 
-        RefreshCardsUI();
-        RefreshMissionsUI();
-        CheckGameEnded();
-
-        if (!newCardsInstantiated) return;
-
-        CheckMissions();
+    private bool IsMissionCompleted(CardType cardType)
+    {
+        foreach (var (biomeType, count) in lastModifiedBiomes)
+        {
+            if (cardType.Biome != biomeType) continue;
+            if ((cardType.MissionType == CardMissionType.EqualsOrGreater && cardType.Value <= count) ||
+                (cardType.MissionType == CardMissionType.Equals && cardType.Value == count))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void RefreshMissionsUI()
@@ -331,9 +281,12 @@ public class GameManager : MonoBehaviour
 
         completedCards.ForEach(card =>
         {
-            if (card.CardMissionDifficulty == CardMissionDifficulty.Easy) completedEasyMissions++;
-            if (card.CardMissionDifficulty == CardMissionDifficulty.Medium) completedMediumMissions++;
-            if (card.CardMissionDifficulty == CardMissionDifficulty.Hard) completedHardMissions++;
+            switch (card.CardMissionDifficulty)
+            {
+                case CardMissionDifficulty.Easy: completedEasyMissions++; break;
+                case CardMissionDifficulty.Medium: completedMediumMissions++; break;
+                case CardMissionDifficulty.Hard: completedHardMissions++; break;
+            }
         });
 
         guiGameController.RefreshMissionsUI(completedEasyMissions, completedMediumMissions, completedHardMissions);
@@ -376,16 +329,15 @@ public class GameManager : MonoBehaviour
 
     private void UpdateTimer()
     {
-        if (timerRunning)
-        {
-            currentTurnDuration += Time.deltaTime;
-            UpdataTimerOnGUI();
+        if (!timerRunning) return;
 
-            if (currentTurnDuration >= turnDuration)
-            {
-                EndTurn();
-                LoseGame();
-            }
+        currentTurnDuration += Time.deltaTime;
+        UpdataTimerOnGUI();
+
+        if (currentTurnDuration >= turnDuration)
+        {
+            EndTurn();
+            LoseGame();
         }
     }
 
