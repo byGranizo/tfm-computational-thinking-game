@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics.CodeAnalysis;
 
+[SuppressMessage("csharpsquid", "S101:Types should be named in PascalCase", Justification = "Legacy naming convention")]
 public class GUIController : MonoBehaviour
 {
     private MainMenuController mainMenu;

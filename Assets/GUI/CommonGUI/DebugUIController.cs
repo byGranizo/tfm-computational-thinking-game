@@ -7,12 +7,10 @@ public class DebugUIController : MonoBehaviour
 {
     VisualElement root;
 
-    CommonUIController commonUIController;
-
     // Start is called before the first frame update
     void Awake()
     {
-        commonUIController = GetComponentInParent<CommonUIController>();
+        CommonUIController commonUIController = GetComponentInParent<CommonUIController>();
 
         UIDocument uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;

@@ -8,37 +8,29 @@ public class MainMenuController : MonoBehaviour
 {
     private GUIController guiController;
 
-    private UIDocument doc;
-
     private VisualElement root;
-
-    private Button startButton;
-    private Button exitButton;
-    private Button rulesButton;
-    private Button controlsButton;
-    private Button debugButton;
 
     void OnEnable()
     {
         guiController = GetComponentInParent<GUIController>();
 
-        doc = GetComponent<UIDocument>();
+        UIDocument doc = GetComponent<UIDocument>();
 
         root = doc.rootVisualElement;
 
-        startButton = root.Q<Button>("StartButton");
+        Button startButton = root.Q<Button>("StartButton");
         startButton.clicked += StartButtonOnClicked;
 
-        exitButton = root.Q<Button>("ExitButton");
+        Button exitButton = root.Q<Button>("ExitButton");
         exitButton.clicked += ExitButtonOnClicked;
 
-        rulesButton = root.Q<Button>("RulesButton");
+        Button rulesButton = root.Q<Button>("RulesButton");
         rulesButton.clicked += OnClickRules;
 
-        controlsButton = root.Q<Button>("ControlsButton");
+        Button controlsButton = root.Q<Button>("ControlsButton");
         controlsButton.clicked += OnClickControls;
 
-        debugButton = root.Q<Button>("DebugButton");
+        Button debugButton = root.Q<Button>("DebugButton");
         debugButton.clicked += OnClickDebug;
 
     }

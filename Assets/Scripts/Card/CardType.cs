@@ -65,41 +65,11 @@ public class CardType : ScriptableObject
         }
     }
 
-    public int TurnStart
-    {
-        get
-        {
-            return turnStart;
-        }
-        set
-        {
-            turnStart = value;
-        }
-    }
+    public int TurnStart { get; set; }
 
-    public int TurnEnd
-    {
-        get
-        {
-            return turnEnd;
-        }
-        set
-        {
-            turnEnd = value;
-        }
-    }
+    public int TurnEnd { get; set; }
 
-    public bool CompletedWithWildCard
-    {
-        get
-        {
-            return completedWithWildCard;
-        }
-        set
-        {
-            completedWithWildCard = value;
-        }
-    }
+    public bool CompletedWithWildCard { get; set; }
 
     public CardType()
     {

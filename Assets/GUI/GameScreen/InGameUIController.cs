@@ -7,7 +7,6 @@ public class InGameUIController : MonoBehaviour
 {
     GUIGameController guiGameController;
 
-    UIDocument uiDocument;
     VisualElement root;
     Button newCardButton;
     readonly Button[] cardsButtons = new Button[3];
@@ -22,7 +21,7 @@ public class InGameUIController : MonoBehaviour
     {
         guiGameController = GetComponentInParent<GUIGameController>();
 
-        uiDocument = GetComponent<UIDocument>();
+        UIDocument uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
         newCardButton = root.Q<Button>("NewCard");

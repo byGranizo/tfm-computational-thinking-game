@@ -5,21 +5,19 @@ using UnityEngine.UIElements;
 
 public class NicknameModalController : MonoBehaviour
 {
-    private UIDocument doc;
     private VisualElement root;
 
-    private Button submitButton;
     private TextField nicknameField;
 
     private void Awake()
     {
-        doc = GetComponent<UIDocument>();
+        UIDocument doc = GetComponent<UIDocument>();
 
         root = doc.rootVisualElement;
 
         nicknameField = root.Q<TextField>("NicknameField");
 
-        submitButton = root.Q<Button>("SubmitButton");
+        Button submitButton = root.Q<Button>("SubmitButton");
         submitButton.clicked += SubmitButtonOnClicked;
     }
 

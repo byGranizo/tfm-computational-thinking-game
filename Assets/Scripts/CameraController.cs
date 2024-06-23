@@ -9,7 +9,6 @@ public class CameraController : MonoBehaviour
     private readonly float planeHeight = 0;
 
     private Vector3 mouseOrigin;
-    private bool isDragging = false;
 
     [SerializeField]
     private int maxZoom = 10;
@@ -27,6 +26,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        bool isDragging = false;
         if (!gameManager.IsCameraMovementAllowed())
         {
             isDragging = false;

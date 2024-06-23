@@ -8,7 +8,6 @@ public class BoardController : MonoBehaviour
 {
     [SerializeField, Tooltip("Built for odd numbers only. If an even number is entered, it will be converted to the next odd number.")]
     private int boardSize = 3;
-    private int boardIndexOffset;
     private HexagonalCell[,] boardGrid;
 
     [SerializeField]
@@ -40,7 +39,7 @@ public class BoardController : MonoBehaviour
         }
         boardGrid = new HexagonalCell[boardSize, boardSize];
 
-        boardIndexOffset = boardSize / 2;
+        int boardIndexOffset = boardSize / 2;
 
         for (int i = -boardIndexOffset; i <= boardIndexOffset; i++)
         {
