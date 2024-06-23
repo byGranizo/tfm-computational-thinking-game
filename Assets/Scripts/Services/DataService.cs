@@ -157,7 +157,7 @@ public static class DataService
       string responseContent = await response.Content.ReadAsStringAsync();
 
       var responseJson = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseContent);
-      string documentId = responseJson["name"].ToString().Split("/").Last();
+      string documentId = responseJson["name"].ToString().Split("/")[^1];
 
       return documentId;
     }
