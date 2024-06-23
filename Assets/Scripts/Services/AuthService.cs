@@ -18,7 +18,7 @@ public static class AuthService
     public static async Task<FirebaseUser> LoginUser(string nickname)
     {
         string username = nickname.Replace(" ", "").ToLower();
-        string password = GenerateMD5(username);
+        string password = GenerateSHA256(username);
 
         FirebaseUser userLogin = await LoginRequest(username, password);
         if (userLogin != null)
@@ -90,12 +90,12 @@ public static class AuthService
         }
     }
 
-    private static string GenerateMD5(string input)
+    private static string GenerateSHA256(string input)
     {
-        using (MD5 md5 = MD5.Create())
+        using (SHA256 sha256 = SHA256.Create())
         {
             byte[] inputBytes = Encoding.ASCII.GetBytes(input);
-            byte[] hashBytes = md5.ComputeHash(inputBytes);
+            byte[] hashBytes = sha256.ComputeHash(inputBytes);
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < hashBytes.Length; i++)
