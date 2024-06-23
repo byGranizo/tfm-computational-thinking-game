@@ -93,60 +93,23 @@ public class HexagonalCell : MonoBehaviour
         UpdateColliderAndPlaceholder();
         UpdateNeighbors();
 
-        if (boardController != null)
-        {
-            boardController.CheckModifiedBiomes(this);
-        }
-
+        boardController?.CheckModifiedBiomes(this);
     }
 
     private void UpdateNeighbors()
     {
-        if (north != null)
+        foreach (var neighbor in GetAllNeightbours())
         {
-            north.UpdateColliderAndPlaceholder();
-        }
-
-        if (northEast != null)
-        {
-            northEast.UpdateColliderAndPlaceholder();
-        }
-
-        if (southEast != null)
-        {
-            southEast.UpdateColliderAndPlaceholder();
-        }
-
-        if (south != null)
-        {
-            south.UpdateColliderAndPlaceholder();
-        }
-
-        if (southWest != null)
-        {
-            southWest.UpdateColliderAndPlaceholder();
-        }
-
-        if (northWest != null)
-        {
-            northWest.UpdateColliderAndPlaceholder();
+            neighbor?.UpdateColliderAndPlaceholder();
         }
     }
 
     public void UpdateColliderAndPlaceholder()
     {
-        if (tile != null)
-        {
-            cellCollider.SetActive(false);
-            placeholder.SetActive(false);
-        }
-        else
-        {
-            cellCollider.SetActive(true);
-            placeholder.SetActive(true);
-        }
+        bool isActive = tile == null;
+        cellCollider.SetActive(isActive);
+        placeholder.SetActive(isActive);
     }
-
     public HexagonalCell GetNeighbor(TileCoordinates direction)
     {
         return direction switch
@@ -181,61 +144,23 @@ public class HexagonalCell : MonoBehaviour
 
     public bool CanPlaceTile(TileType tileType)
     {
-        if (North != null && North.Tile != null)
+        return IsBiomeCompatible(North, tileType.BiomeNorth, t => t.BiomeSouth) &&
+               IsBiomeCompatible(NorthEast, tileType.BiomeNorthEast, t => t.BiomeSouthWest) &&
+               IsBiomeCompatible(SouthEast, tileType.BiomeSouthEast, t => t.BiomeNorthWest) &&
+               IsBiomeCompatible(South, tileType.BiomeSouth, t => t.BiomeNorth) &&
+               IsBiomeCompatible(SouthWest, tileType.BiomeSouthWest, t => t.BiomeNorthEast) &&
+               IsBiomeCompatible(NorthWest, tileType.BiomeNorthWest, t => t.BiomeSouthEast);
+    }
+
+    private bool IsBiomeCompatible(HexagonalCell neighbor, BiomeType tileBiome, System.Func<TileType, BiomeType> getNeighborBiome)
+    {
+        if (neighbor == null || neighbor.Tile == null)
         {
-            BiomeType biomeAtNorth = North.Tile.TileType.BiomeSouth;
-            if (biomeAtNorth != BiomeType.Wildcard && tileType.BiomeNorth != BiomeType.Wildcard && biomeAtNorth != tileType.BiomeNorth)
-            {
-                return false;
-            }
+            return true;
         }
 
-        if (NorthEast != null && NorthEast.Tile != null)
-        {
-            BiomeType biomeAtNorthEast = NorthEast.Tile.TileType.BiomeSouthWest;
-            if (biomeAtNorthEast != BiomeType.Wildcard && tileType.BiomeNorthEast != BiomeType.Wildcard && biomeAtNorthEast != tileType.BiomeNorthEast)
-            {
-                return false;
-            }
-        }
-
-        if (SouthEast != null && SouthEast.Tile != null)
-        {
-            BiomeType biomeAtSouthEast = SouthEast.Tile.TileType.BiomeNorthWest;
-            if (biomeAtSouthEast != BiomeType.Wildcard && tileType.BiomeSouthEast != BiomeType.Wildcard && biomeAtSouthEast != tileType.BiomeSouthEast)
-            {
-                return false;
-            }
-        }
-
-        if (South != null && South.Tile != null)
-        {
-            BiomeType biomeAtSouth = South.Tile.TileType.BiomeNorth;
-            if (biomeAtSouth != BiomeType.Wildcard && tileType.BiomeSouth != BiomeType.Wildcard && biomeAtSouth != tileType.BiomeSouth)
-            {
-                return false;
-            }
-        }
-
-        if (SouthWest != null && SouthWest.Tile != null)
-        {
-            BiomeType biomeAtSouthWest = SouthWest.Tile.TileType.BiomeNorthEast;
-            if (biomeAtSouthWest != BiomeType.Wildcard && tileType.BiomeSouthWest != BiomeType.Wildcard && biomeAtSouthWest != tileType.BiomeSouthWest)
-            {
-                return false;
-            }
-        }
-
-        if (NorthWest != null && NorthWest.Tile != null)
-        {
-            BiomeType biomeAtNorthWest = NorthWest.Tile.TileType.BiomeSouthEast;
-            if (biomeAtNorthWest != BiomeType.Wildcard && tileType.BiomeNorthWest != BiomeType.Wildcard && biomeAtNorthWest != tileType.BiomeNorthWest)
-            {
-                return false;
-            }
-        }
-
-        return true;
+        BiomeType neighborBiome = getNeighborBiome(neighbor.Tile.TileType);
+        return neighborBiome == BiomeType.Wildcard || tileBiome == BiomeType.Wildcard || neighborBiome == tileBiome;
     }
 
 }
