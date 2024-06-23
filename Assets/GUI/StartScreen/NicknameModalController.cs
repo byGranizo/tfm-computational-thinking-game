@@ -5,8 +5,6 @@ using UnityEngine.UIElements;
 
 public class NicknameModalController : MonoBehaviour
 {
-    //private GUIController guiController;
-
     private UIDocument doc;
     private VisualElement root;
 
@@ -15,8 +13,6 @@ public class NicknameModalController : MonoBehaviour
 
     private void Awake()
     {
-        //guiController = GetComponentInParent<GUIController>();
-
         doc = GetComponent<UIDocument>();
 
         root = doc.rootVisualElement;

@@ -86,7 +86,6 @@
     <Compile Include="Assets\Scripts\Tile\Tile.cs" />
     <Compile Include="Assets\Scripts\CellCollider.cs" />
     <Compile Include="Assets\Scripts\Tile\BiomeType.cs" />
-    <Compile Include="Assets\Scripts\Tile\TileInvokerController.cs" />
     <Compile Include="Assets\Scripts\HexagonalCell.cs" />
     <Compile Include="Assets\GUI\CommonGUI\DebugUIController.cs" />
     <Compile Include="Assets\Scripts\Tile\TileTypeEditor.cs" />

@@ -15,16 +15,9 @@ public class Tile : MonoBehaviour
         get { return tileType; }
     }
 
-    //private GameManager gameManager;
-
     void Awake()
     {
         tileMeshRenderer = GetComponent<MeshRenderer>();
-    }
-
-    void Start()
-    {
-        //gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
