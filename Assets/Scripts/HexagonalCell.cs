@@ -33,41 +33,17 @@ public class HexagonalCell : MonoBehaviour
         set { boardCoordinates = value; }
     }
 
-    public HexagonalCell North
-    {
-        get { return north; }
-        set { north = value; }
-    }
+    public HexagonalCell North { get; set; }
 
-    public HexagonalCell NorthEast
-    {
-        get { return northEast; }
-        set { northEast = value; }
-    }
+    public HexagonalCell NorthEast { get; set; }
 
-    public HexagonalCell SouthEast
-    {
-        get { return southEast; }
-        set { southEast = value; }
-    }
+    public HexagonalCell SouthEast { get; set; }
 
-    public HexagonalCell South
-    {
-        get { return south; }
-        set { south = value; }
-    }
+    public HexagonalCell South { get; set; }
 
-    public HexagonalCell SouthWest
-    {
-        get { return southWest; }
-        set { southWest = value; }
-    }
+    public HexagonalCell SouthWest { get; set; }
 
-    public HexagonalCell NorthWest
-    {
-        get { return northWest; }
-        set { northWest = value; }
-    }
+    public HexagonalCell NorthWest { get; set; }
 
 
     void Awake()

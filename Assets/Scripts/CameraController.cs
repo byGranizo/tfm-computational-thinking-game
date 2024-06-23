@@ -26,20 +26,17 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        bool isDragging = false;
         if (!gameManager.IsCameraMovementAllowed())
         {
-            isDragging = false;
             return;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             mouseOrigin = Mouse.GetWorldPosition(planeHeight);
-            isDragging = true;
         }
 
-        isDragging = Input.GetMouseButton(0);
+        bool isDragging = Input.GetMouseButton(0);
 
         if (isDragging)
         {

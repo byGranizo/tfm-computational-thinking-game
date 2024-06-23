@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool secuentialTiles = false;
 
-    private BoardController boardController;
     private GUIGameController guiGameController;
     private CommonUIController commonUIController;
     private int nextCardIndex = -1;
@@ -60,7 +59,7 @@ public class GameManager : MonoBehaviour
         guiGameController = FindObjectOfType<GUIGameController>();
         commonUIController = FindObjectOfType<CommonUIController>();
 
-        boardController = FindObjectOfType<BoardController>();
+        BoardController boardController = FindObjectOfType<BoardController>();
         boardController.InitBoardGrid();
     }
 

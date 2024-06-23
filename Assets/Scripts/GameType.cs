@@ -26,17 +26,7 @@ public class GameType
     this.result = result;
   }
 
-  public string Id
-  {
-    get
-    {
-      return id;
-    }
-    set
-    {
-      id = value;
-    }
-  }
+  public string Id { get; set; }
 
   public DateTime StartDateTime
   {

@@ -21,10 +21,6 @@ public class CardType : ScriptableObject
     [SerializeField]
     private CardMissionDifficulty cardMissionDifficulty;
 
-    private int turnStart;
-    private int turnEnd;
-    private bool completedWithWildCard = false;
-
     public Texture2D Texture
     {
         get

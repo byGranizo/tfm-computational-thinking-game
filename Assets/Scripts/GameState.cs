@@ -27,7 +27,6 @@ public class GameState : MonoBehaviour
         Debug.Log("Nickname submitted " + nickname);
         FirebaseUser user = await AuthService.LoginUser(nickname);
         LocalStorage.SaveUser(user);
-        return;
     }
 
     public void SubmitCompletedMission(CardType cardType)
