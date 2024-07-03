@@ -800,7 +800,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   turnDuration: 30
-  secuentialTiles: 1
+  secuentialTiles: 0
 --- !u!1 &1684808571
 GameObject:
   m_ObjectHideFlags: 0
