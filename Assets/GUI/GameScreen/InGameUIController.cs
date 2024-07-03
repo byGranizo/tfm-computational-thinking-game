@@ -60,7 +60,8 @@ public class InGameUIController : MonoBehaviour
 
     private void OnCardButtonClicked(int index)
     {
-        guiGameController.OnCardButtonClicked(index);
+        //guiGameController.OnCardButtonClicked(index);
+        Debug.Log("Card button clicked: " + index);
     }
 
     private void OnTileButtonClicked(BiomeType biomeType)

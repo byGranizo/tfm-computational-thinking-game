@@ -105,11 +105,6 @@ public class GUIGameController : MonoBehaviour
     }
 
 
-    public void OnNewCardButtonClicked()
-    {
-        Debug.Log("New card button clicked");
-    }
-
     public void ChangeNextCardDifficulty(CardMissionDifficulty nextCardDifficulty)
     {
         Texture2D cardBackTexture = null;
