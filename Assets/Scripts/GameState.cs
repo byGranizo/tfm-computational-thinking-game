@@ -22,6 +22,12 @@ public class GameState : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
+    private void OnApplicationQuit()
+    {
+        LocalStorage.DeleteUser();
+        LocalStorage.DeleteGame();
+    }
+
     public async Task SubmitNickname(string nickname)
     {
         Debug.Log("Nickname submitted " + nickname);

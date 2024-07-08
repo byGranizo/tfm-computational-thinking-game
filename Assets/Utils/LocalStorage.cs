@@ -15,9 +15,15 @@ public static class LocalStorage
     public static FirebaseUser GetUser()
     {
         string savedJson = PlayerPrefs.GetString("currentUser");
-        FirebaseUser user = JsonConvert.DeserializeObject<FirebaseUser>(savedJson);
+        if (string.IsNullOrEmpty(savedJson)) return null;
 
+        FirebaseUser user = JsonConvert.DeserializeObject<FirebaseUser>(savedJson);
         return user;
+    }
+
+    public static void DeleteUser()
+    {
+        PlayerPrefs.DeleteKey("currentUser");
     }
 
     public static void SaveGame(GameType game)

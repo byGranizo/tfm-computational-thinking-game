@@ -1,10 +1,10 @@
-<size=50>Instrucciones</size>
+<size=50>Reglas</size>
 
 <size=35>Componentes</size>
 
 <size=25>Losetas</size>
 
-En Riverwood Town hay 46 losetas, la loseta inicial y tres tipos según sudor so; Losetas de bosques, ríos y pueblos. Esos tres montones definen el elemento principal de esas losetas. ¡Pero eso no significa que esos elementos aparezcan de forma exclusiva en ellas!
+En Riverwood Town hay 46 losetas, la loseta inicial y tres tipos según su dorso; Losetas de bosques, ríos y pueblos. Esos tres montones definen el elemento principal de esas losetas. ¡Pero eso no significa que esos elementos aparezcan de forma exclusiva en ellas!
 
 <size=25>Cartas</size>
 

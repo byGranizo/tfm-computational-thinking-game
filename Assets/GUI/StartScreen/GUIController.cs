@@ -19,6 +19,18 @@ public class GUIController : MonoBehaviour
         commonUIController = FindObjectOfType<CommonUIController>();
     }
 
+    void Start()
+    {
+        FirebaseUser user = LocalStorage.GetUser();
+        bool isUserEmpty = user == null || string.IsNullOrEmpty(user.idToken);
+
+        if (!isUserEmpty)
+        {
+            nickNameModal.HideUI();
+        }
+
+    }
+
     public void GoToMainMenu()
     {
         mainMenu.ShowUI();
