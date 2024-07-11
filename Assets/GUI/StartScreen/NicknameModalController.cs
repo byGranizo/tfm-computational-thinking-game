@@ -24,6 +24,11 @@ public class NicknameModalController : MonoBehaviour
     private async void SubmitButtonOnClicked()
     {
         Debug.Log("Submit button clicked");
+        if (nicknameField.text.Replace(" ", "").ToLower().Length == 0)
+        {
+            Debug.Log("Nickname is empty");
+            return;
+        }
         await GameState.Instance.SubmitNickname(nicknameField.text);
         HideUI();
     }
